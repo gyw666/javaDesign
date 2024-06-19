@@ -1,3 +1,6 @@
+package Test;
+
+import personType.*;
 
 import java.util.Random;
 
@@ -5,29 +8,29 @@ import java.util.Random;
 public class Test1 {
     public static final String FILENAME="person.txt";
     public static void main(String[] args) {
-        //Student Faculty staff
+        //personType.Student personType.Faculty staff
         //MyDate(year,month,day)
         Random rand = new Random();
         int capacity = rand.nextInt(500);
         Person[] persons = new Person[capacity];
         for (int i = 0; i < capacity; i++) {
-            //1 Student
-            //2 Faculty
-            //3 Staff
-            int type = rand.nextInt(1, 4);
+            //1 personType.Student
+            //2 personType.Faculty
+            //3 personType.Staff
+            int type = 1+rand.nextInt(3);
             switch (type) {
                 case 1: {
-                    //Student
+                    //personType.Student
                     persons[i]=new Student(getName(),getAddress(),getPhoneNumber(),getEmailAddress());
                     break;
                 }
                 case 2: {
-                    //Faculty
+                    //personType.Faculty
                     persons[i]=new Faculty(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getOffice(),getSalary(),getMyData(),getWorkTime(),getRank());
                     break;
                 }
                 case 3: {
-                    //Staff
+                    //personType.Staff
                     persons[i]=new Staff(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getOffice(),getSalary(),getMyData(),getTitle());
                     break;
                 }
@@ -48,8 +51,8 @@ public class Test1 {
     public static MyData getMyData() {
         Random rand = new Random();
         //生成随机年份
-        String year = rand.nextInt(2000, 2025) + "";
-        int m = rand.nextInt(0, 13);
+        String year = 2000+rand.nextInt(25) + "";
+        int m = rand.nextInt(13);
         String month = m + "";
         String day = "";
         if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {

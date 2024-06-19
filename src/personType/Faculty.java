@@ -1,11 +1,13 @@
-public class Faculty extends Employee{
+package personType;
+
+public class Faculty extends Employee {
     private String workTime;
     private String rank;
 
     public Faculty() {
     }
 
-    public Faculty(String name, String address, String phoneNumber, String emailAddress,String office, String salary, MyData data,String workTime, String rank) {
+    public Faculty(String name, String address, String phoneNumber, String emailAddress, String office, String salary, MyData data, String workTime, String rank) {
         super(name, address, phoneNumber, emailAddress, office, salary, data);
         this.workTime = workTime;
         this.rank = rank;
@@ -44,6 +46,6 @@ public class Faculty extends Employee{
     }
 
     public String toString() {
-        return "class:Faculty,name:"+this.getName();
+        return "class:personType.Faculty,name:"+this.getName();
     }
 }

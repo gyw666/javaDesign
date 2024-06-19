@@ -1,4 +1,6 @@
-public abstract class Employee extends Person{
+package personType;
+
+public abstract class Employee extends Person {
     private String office;
     private String salary;
     private MyData data;
@@ -62,6 +64,6 @@ public abstract class Employee extends Person{
     }
 
     public String toString() {
-        return "Employee{office = " + office + ", salary = " + salary + ", data = " + data + "}";
+        return "personType.Employee{office = " + office + ", salary = " + salary + ", data = " + data + "}";
     }
 }

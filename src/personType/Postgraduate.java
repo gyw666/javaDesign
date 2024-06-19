@@ -1,4 +1,6 @@
-public class Postgraduate extends Student{
+package personType;
+
+public class Postgraduate extends Student {
     private String searchField;
     private String tutor;
 
@@ -44,6 +46,6 @@ public class Postgraduate extends Student{
     }
 
     public String toString() {
-        return "class:Postgraduate,name:"+this.getName();
+        return "class:personType.Postgraduate,name:"+this.getName();
     }
 }

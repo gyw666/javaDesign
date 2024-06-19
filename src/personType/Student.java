@@ -1,4 +1,6 @@
-public class Student extends Person{
+package personType;
+
+public class Student extends Person {
     private final static String grade1="freshman";
     private final static String grade2="sophomore";
     private final static String grade3="junior";
@@ -9,6 +11,6 @@ public class Student extends Person{
     }
     
     public String toString() {
-        return "class:Student,name:" + this.getName();
+        return "class:personType.Student,name:" + this.getName();
     }
 }

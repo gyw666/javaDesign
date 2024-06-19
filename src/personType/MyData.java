@@ -1,3 +1,5 @@
+package personType;
+
 public class MyData {
     private String year;
     private String month;
@@ -61,6 +63,6 @@ public class MyData {
     }
 
     public String toString() {
-        return "MyData{year = " + year + ", month = " + month + ", day = " + day + "}";
+        return "personType.MyData{year = " + year + ", month = " + month + ", day = " + day + "}";
     }
 }

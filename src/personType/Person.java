@@ -1,3 +1,5 @@
+package personType;
+
 import java.io.*;
 
 public abstract class Person {
@@ -81,7 +83,7 @@ public abstract class Person {
     }
 
     public String toString() {
-        return "Person{name = " + name + ", address = " + address + ", phoneNumber = " + phoneNumber + ", emailAddress = " + emailAddress + "}";
+        return "personType.Person{name = " + name + ", address = " + address + ", phoneNumber = " + phoneNumber + ", emailAddress = " + emailAddress + "}";
     }
 
     public boolean fileWrite(String fileName) {
