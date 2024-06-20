@@ -1,14 +1,25 @@
 package Test;
 
+import javafx.geometry.Side;
+import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.stage.Screen;
 import personType.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -31,10 +42,10 @@ public class Test3 extends Application {
     Button delete14 = new Button("删除");
     Button delete15 = new Button("删除");
 
-    Button search1=new Button("Student");
-    Button search2=new Button("Faculty");
-    Button search3=new Button("Staff");
-    Button search4=new Button("Postgraduate");
+    Button search1 = new Button("Student");
+    Button search2 = new Button("Faculty");
+    Button search3 = new Button("Staff");
+    Button search4 = new Button("Postgraduate");
 
     Button modify1 = new Button("修改");
     Button modify2 = new Button("修改");
@@ -52,7 +63,7 @@ public class Test3 extends Application {
     Button modify14 = new Button("修改");
     Button modify15 = new Button("修改");
 
-    Button confirmButton=new Button("确定修改");
+    Button confirmButton = new Button("确定修改");
 
     TextField nameField = new TextField();
     TextField addressField = new TextField();
@@ -67,8 +78,6 @@ public class Test3 extends Application {
     TextField officeField = new TextField();
 
     int modifyChoice;
-
-
 
 
     public static void main(String[] args) {
@@ -269,6 +278,7 @@ public class Test3 extends Application {
 
         AnchorPane ap = new AnchorPane();
 
+
         ap.getChildren().addAll(tableView);
 
         //添加按钮
@@ -278,6 +288,7 @@ public class Test3 extends Application {
         bu_add.setOnAction(event -> {
             setSearchButtonVisual(false);
             setDeleteButtonVisual(false);
+            setModifyButtonVisual(false);
             setTextFieldNotVisible();
             list.add(gerPersonList().get(0));
             System.out.println("添加成功");
@@ -333,7 +344,7 @@ public class Test3 extends Application {
         Button bu_modify = new Button("修改信息");
 
         confirmButton.setLayoutX(1040);
-        confirmButton.setLayoutY(22+17*deleteButtonHeight);
+        confirmButton.setLayoutY(22 + 17 * deleteButtonHeight);
 
         confirmButton.setOnAction(event -> {
             Person temp = list.get(modifyChoice);
@@ -404,41 +415,39 @@ public class Test3 extends Application {
         modify14.setLayoutX(975);
         modify15.setLayoutX(975);
 
-        modify1.setLayoutY(22+0*deleteButtonHeight);
-        modify2.setLayoutY(22+1*deleteButtonHeight);
-        modify3.setLayoutY(22+2*deleteButtonHeight);
-        modify4.setLayoutY(22+3*deleteButtonHeight);
-        modify5.setLayoutY(22+4*deleteButtonHeight);
-        modify6.setLayoutY(22+5*deleteButtonHeight);
-        modify7.setLayoutY(22+6*deleteButtonHeight);
-        modify8.setLayoutY(22+7*deleteButtonHeight);
-        modify9.setLayoutY(22+8*deleteButtonHeight);
-        modify10.setLayoutY(22+9*deleteButtonHeight);
-        modify11.setLayoutY(22+10*deleteButtonHeight);
-        modify12.setLayoutY(22+11*deleteButtonHeight);
-        modify13.setLayoutY(22+12*deleteButtonHeight);
-        modify14.setLayoutY(22+13*deleteButtonHeight);
-        modify15.setLayoutY(22+14*deleteButtonHeight);
-
-
+        modify1.setLayoutY(22 + 0 * deleteButtonHeight);
+        modify2.setLayoutY(22 + 1 * deleteButtonHeight);
+        modify3.setLayoutY(22 + 2 * deleteButtonHeight);
+        modify4.setLayoutY(22 + 3 * deleteButtonHeight);
+        modify5.setLayoutY(22 + 4 * deleteButtonHeight);
+        modify6.setLayoutY(22 + 5 * deleteButtonHeight);
+        modify7.setLayoutY(22 + 6 * deleteButtonHeight);
+        modify8.setLayoutY(22 + 7 * deleteButtonHeight);
+        modify9.setLayoutY(22 + 8 * deleteButtonHeight);
+        modify10.setLayoutY(22 + 9 * deleteButtonHeight);
+        modify11.setLayoutY(22 + 10 * deleteButtonHeight);
+        modify12.setLayoutY(22 + 11 * deleteButtonHeight);
+        modify13.setLayoutY(22 + 12 * deleteButtonHeight);
+        modify14.setLayoutY(22 + 13 * deleteButtonHeight);
+        modify15.setLayoutY(22 + 14 * deleteButtonHeight);
 
 
         //设置事件
-        setPerModifyButtonEvent(list,modify1,0);
-        setPerModifyButtonEvent(list,modify2,1);
-        setPerModifyButtonEvent(list,modify3,2);
-        setPerModifyButtonEvent(list,modify4,3);
-        setPerModifyButtonEvent(list,modify5,4);
-        setPerModifyButtonEvent(list,modify6,5);
-        setPerModifyButtonEvent(list,modify7,6);
-        setPerModifyButtonEvent(list,modify8,7);
-        setPerModifyButtonEvent(list,modify9,8);
-        setPerModifyButtonEvent(list,modify10,9);
-        setPerModifyButtonEvent(list,modify11,10);
-        setPerModifyButtonEvent(list,modify12,11);
-        setPerModifyButtonEvent(list,modify13,12);
-        setPerModifyButtonEvent(list,modify14,13);
-        setPerModifyButtonEvent(list,modify15,14);
+        setPerModifyButtonEvent(list, modify1, 0);
+        setPerModifyButtonEvent(list, modify2, 1);
+        setPerModifyButtonEvent(list, modify3, 2);
+        setPerModifyButtonEvent(list, modify4, 3);
+        setPerModifyButtonEvent(list, modify5, 4);
+        setPerModifyButtonEvent(list, modify6, 5);
+        setPerModifyButtonEvent(list, modify7, 6);
+        setPerModifyButtonEvent(list, modify8, 7);
+        setPerModifyButtonEvent(list, modify9, 8);
+        setPerModifyButtonEvent(list, modify10, 9);
+        setPerModifyButtonEvent(list, modify11, 10);
+        setPerModifyButtonEvent(list, modify12, 11);
+        setPerModifyButtonEvent(list, modify13, 12);
+        setPerModifyButtonEvent(list, modify14, 13);
+        setPerModifyButtonEvent(list, modify15, 14);
 
 
         ap.getChildren().add(modify1);
@@ -458,7 +467,6 @@ public class Test3 extends Application {
         ap.getChildren().add(modify15);
 
 
-
         setModifyButtonVisual(false);
 
         nameField.setLayoutX(1025);
@@ -474,17 +482,17 @@ public class Test3 extends Application {
         officeField.setLayoutX(1025);
 
 
-        nameField.setLayoutY(22+0*deleteButtonHeight);
-        addressField.setLayoutY(22+1*deleteButtonHeight);
-        phoneNumberField.setLayoutY(22+2*deleteButtonHeight);
-        emailAddressField.setLayoutY(22+3*deleteButtonHeight);
-        tutorField.setLayoutY(22+4*deleteButtonHeight);
-        searchField.setLayoutY(22+5*deleteButtonHeight);
-        titleField.setLayoutY(22+6*deleteButtonHeight);
-        workTimeField.setLayoutY(22+7*deleteButtonHeight);
-        rankField.setLayoutY(22+8*deleteButtonHeight);
-        salaryField.setLayoutY(22+9*deleteButtonHeight);
-        officeField.setLayoutY(22+10*deleteButtonHeight);
+        nameField.setLayoutY(22 + 0 * deleteButtonHeight);
+        addressField.setLayoutY(22 + 1 * deleteButtonHeight);
+        phoneNumberField.setLayoutY(22 + 2 * deleteButtonHeight);
+        emailAddressField.setLayoutY(22 + 3 * deleteButtonHeight);
+        tutorField.setLayoutY(22 + 4 * deleteButtonHeight);
+        searchField.setLayoutY(22 + 5 * deleteButtonHeight);
+        titleField.setLayoutY(22 + 6 * deleteButtonHeight);
+        workTimeField.setLayoutY(22 + 7 * deleteButtonHeight);
+        rankField.setLayoutY(22 + 8 * deleteButtonHeight);
+        salaryField.setLayoutY(22 + 9 * deleteButtonHeight);
+        officeField.setLayoutY(22 + 10 * deleteButtonHeight);
 
         nameField.setPromptText("请输入姓名");
         addressField.setPromptText("请输入地址");
@@ -535,13 +543,13 @@ public class Test3 extends Application {
             search2.setLayoutX(600);
             search3.setLayoutX(600);
             search4.setLayoutX(600);
-            search1.setLayoutY(450+1*deleteButtonHeight);
-            search2.setLayoutY(450+2*deleteButtonHeight);
-            search3.setLayoutY(450+3*deleteButtonHeight);
-            search4.setLayoutY(450+4*deleteButtonHeight);
+            search1.setLayoutY(450 + 1 * deleteButtonHeight);
+            search2.setLayoutY(450 + 2 * deleteButtonHeight);
+            search3.setLayoutY(450 + 3 * deleteButtonHeight);
+            search4.setLayoutY(450 + 4 * deleteButtonHeight);
 
             setSearchButtonVisual(true);
-            search1.setOnAction(event1 ->{
+            search1.setOnAction(event1 -> {
                 for (int j = 0; j < 100; j++) {
                     for (int i = 0; i < list.size(); i++) {
                         if (!(list.get(i) instanceof Student)) {
@@ -551,7 +559,7 @@ public class Test3 extends Application {
                 }
                 tableView.refresh();
                 System.out.println("查询成功");
-            } );
+            });
 
             search2.setOnAction(event1 -> {
                 for (int j = 0; j < 100; j++) {
@@ -596,9 +604,30 @@ public class Test3 extends Application {
         ap.getChildren().add(bu_search);
 
 
+        // 创建背景图片
+        Image image = new Image("file:D:\\java\\javaDesign\\src\\Test\\cqut.png"); // 替换为你的图片路径
+        image = makeTransparent(image);
+
+        BackgroundImage backgroundImage = new BackgroundImage(image,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                new BackgroundPosition(
+                        Side.RIGHT, 0, true, Side.BOTTOM, 0, true),
+                BackgroundSize.DEFAULT);
+
+
+//        Color transparentColor = new Color(0, 0, 0, 0.5F); // 透明度为50%
+//        BackgroundFill backgroundFill = new BackgroundFill();
+
+
+        // 设置背景
+        ap.setBackground(new Background(backgroundImage));
+
         Scene scene = new Scene(ap);
+
+
         primaryStage.setScene(scene);
-        primaryStage.setHeight(650);
+        primaryStage.setHeight(640);
         primaryStage.setWidth(1200);
         primaryStage.setAlwaysOnTop(true);
 
@@ -621,11 +650,11 @@ public class Test3 extends Application {
         confirmButton.setVisible(false);
     }
 
-    private void setPerModifyButtonEvent(ObservableList<Person> list,Button modify,int line) {
+    private void setPerModifyButtonEvent(ObservableList<Person> list, Button modify, int line) {
         modify.setOnAction(event -> {
-            modifyChoice=line;
+            modifyChoice = line;
             confirmButton.setVisible(true);
-            modifyEvent(list,line);
+            modifyEvent(list, line);
         });
     }
 
@@ -685,7 +714,7 @@ public class Test3 extends Application {
     }
 
 
-    private void modifyEvent(ObservableList<Person> list,int line){
+    private void modifyEvent(ObservableList<Person> list, int line) {
         Person temp = list.get(line);
         //姓名
         nameField.setVisible(true);
@@ -741,6 +770,33 @@ public class Test3 extends Application {
         }
         System.out.println("修改成功");
         list.set(line, temp);
+    }
+
+    private Image makeTransparent(Image inputImage) {
+        int W = (int) inputImage.getWidth();
+        int H = (int) inputImage.getHeight();
+        WritableImage outputImage = new WritableImage(W, H);
+        PixelReader reader = inputImage.getPixelReader();
+        PixelWriter writer = outputImage.getPixelWriter();
+        for (int y = 0; y < H; y++) {
+            for (int x = 0; x < W; x++) {
+                int argb = reader.getArgb(x, y);
+
+                int r = (argb >> 16) & 0xFF;
+                int g = (argb >> 8) & 0xFF;
+                int b = argb & 0xFF;
+
+                if (r >= 0xFF
+                        && g >= 0xFF
+                        && b >= 0xFF) {
+                    argb &= 0x00FFFFFF;
+                }
+
+                writer.setArgb(x, y, argb);
+            }
+        }
+
+        return outputImage;
     }
 
 }
