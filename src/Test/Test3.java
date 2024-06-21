@@ -1,15 +1,11 @@
 package Test;
 
 import javafx.geometry.Side;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.stage.Screen;
 import personType.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -17,9 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -99,7 +92,7 @@ public class Test3 extends Application {
             //2 personType.Faculty
             //3 personType.Staff
             //4 personType.Postgraduate
-            int type = 1 + rand.nextInt(5);
+            int type = 1 + rand.nextInt(4);
             switch (type) {
                 case 1: {
                     //personType.Student
@@ -287,7 +280,7 @@ public class Test3 extends Application {
 
 
         // 创建背景图片
-        Image image = new Image("file:D:\\java\\javaDesign\\src\\Test\\cqut.png"); // 替换为你的图片路径
+        Image image = new Image("file:D:\\java\\javaDesign\\src\\Test\\cqut.png"); //
 
         BackgroundImage backgroundImage = new BackgroundImage(image,
                 BackgroundRepeat.NO_REPEAT,
