@@ -18,7 +18,11 @@ import java.util.Random;
 
 
 public class Test3 extends Application {
+    //每个按钮和textField的宽度
     public static final int deleteButtonHeight = 24;
+
+    //需要用到的button
+    //为了方便管理可以用HBox/VBox(写这个的时候不知道这个知识点)
     Button delete1 = new Button("删除");
     Button delete2 = new Button("删除");
     Button delete3 = new Button("删除");
@@ -58,6 +62,7 @@ public class Test3 extends Application {
 
     Button confirmButton = new Button("确定修改");
 
+    //修改人物信息时需要用到的文本输入框
     TextField nameField = new TextField();
     TextField addressField = new TextField();
     TextField phoneNumberField = new TextField();
@@ -70,6 +75,7 @@ public class Test3 extends Application {
     TextField salaryField = new TextField();
     TextField officeField = new TextField();
 
+    //设置为全局变量,存储要修改的行数
     int modifyChoice;
 
 
@@ -117,13 +123,6 @@ public class Test3 extends Application {
         }
         return persons;
     }
-
-    public static void printMessages(ArrayList<Person> persons) {
-        for (Person person : persons) {
-            System.out.println(person);
-        }
-    }
-
 
     //生成随机日期
     public static MyData getMyData() {
@@ -200,45 +199,50 @@ public class Test3 extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //获取列表.里面内容为随机产生的人物
         ArrayList<Person> persons = gerPersonList();
+        //tableView可以使用的list
         ObservableList<Person> list = FXCollections.observableArrayList();
+        //随机产生的人物列表内容加入list
         list.addAll(persons);
 
+
         //初始化界面
+        //把list传给tableView
         TableView<Person> tableView = new TableView<>(list);
+        //生成表头,并加入tableView
+        //personType.Person成员
         TableColumn<Person, String> tc_name = new TableColumn<>("姓名");
         tableView.getColumns().add(tc_name);
-
         TableColumn<Person, String> tc_address = new TableColumn<>("地址");
         tableView.getColumns().add(tc_address);
-
         TableColumn<Person, String> tc_phoneNumber = new TableColumn<>("电话");
         tableView.getColumns().add(tc_phoneNumber);
-
         TableColumn<Person, String> tc_emailAddress = new TableColumn<>("邮箱");
         tableView.getColumns().add(tc_emailAddress);
-
-        //personType.Postgraduate
+        //personType.Postgraduate成员
         TableColumn<Person, String> tc_tutor = new TableColumn<>("导师");
         tableView.getColumns().add(tc_tutor);
         TableColumn<Person, String> tc_searchField = new TableColumn<>("研究方向");
         tableView.getColumns().add(tc_searchField);
-        //personType.Staff
+        //personType.Staff成员
         TableColumn<Person, String> tc_title = new TableColumn<>("职称");
         tableView.getColumns().add(tc_title);
-        //personType.Faculty
+        //personType.Faculty成员
         TableColumn<Person, String> tc_workTime = new TableColumn<>("工作时间");
         tableView.getColumns().add(tc_workTime);
         TableColumn<Person, String> tc_rank = new TableColumn<>("等级");
         tableView.getColumns().add(tc_rank);
-        //employee
+        //p]ersonType.employee成员
         TableColumn<Person, String> tc_salary = new TableColumn<>("薪资");
         tableView.getColumns().add(tc_salary);
         TableColumn<Person, String> tc_office = new TableColumn<>("办公室");
         tableView.getColumns().add(tc_office);
         TableColumn<Person, String> tc_data = new TableColumn<>("入职日期");
         tableView.getColumns().add(tc_data);
-        //person
+
+        //把对应的内容加入相应的列
+        //personType.person
         tc_name.setCellValueFactory(new PropertyValueFactory<Person, String>("name"));
         tc_address.setCellValueFactory(new PropertyValueFactory<Person, String>("address"));
         tc_phoneNumber.setCellValueFactory(new PropertyValueFactory<Person, String>("phoneNumber"));
@@ -251,37 +255,33 @@ public class Test3 extends Application {
         //personType.Faculty
         tc_workTime.setCellValueFactory(new PropertyValueFactory<Person, String>("workTime"));
         tc_rank.setCellValueFactory(new PropertyValueFactory<Person, String>("rank"));
-        //employee
+        //personType.employee
         tc_salary.setCellValueFactory(new PropertyValueFactory<Person, String>("salary"));
         tc_office.setCellValueFactory(new PropertyValueFactory<Person, String>("office"));
         tc_data.setCellValueFactory(new PropertyValueFactory<Person, String>("data"));
 
-
+        //AnchorPane对象
         AnchorPane ap = new AnchorPane();
-
-
+        //把设置好的tableView加入ap
         ap.getChildren().addAll(tableView);
 
         //增
         addFunction(list, tableView, ap);
-
-
         //删
         deleteFunction(list, tableView, ap);
-
+        //查
+        searchFunction(list, tableView, ap);
+        //改
+        modifyFunction(list, ap, tableView);
         //退出系统
         exitFunction(ap);
 
-        //改
-        modifyFunction(list, ap, tableView);
 
-        //查
-        searchFunction(list, tableView, ap);
+        //设置cqut背景
 
-
-        // 创建背景图片
-        Image image = new Image("file:D:\\java\\javaDesign\\src\\Test\\cqut.png"); //
-
+        //创建背景图片
+        Image image = new Image("file:D:\\java\\javaDesign\\src\\Test\\cqut.png");
+        //创建背景,放在右下角
         BackgroundImage backgroundImage = new BackgroundImage(image,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
@@ -292,27 +292,33 @@ public class Test3 extends Application {
         // 设置背景
         ap.setBackground(new Background(backgroundImage));
 
+        //构造ap的Scene
         Scene scene = new Scene(ap);
 
-
+        //设置primaryStage
         primaryStage.setScene(scene);
-        primaryStage.setHeight(640);
-        primaryStage.setWidth(1200);
-        primaryStage.setAlwaysOnTop(true);
-
+        primaryStage.setHeight(640);  //高
+        primaryStage.setWidth(1200);  //宽
+        primaryStage.setAlwaysOnTop(true);//始终显示
+        primaryStage.setTitle("人员信息管理系统");
         primaryStage.show();
 
     }
 
+    //查询功能
     private void searchFunction(ObservableList<Person> list, TableView<Person> tableView, AnchorPane ap) {
         //查询按钮
         Button bu_search = new Button("查找人物");
+        //设置位置
         bu_search.setLayoutX(600);
         bu_search.setLayoutY(450);
+        //设置点击事件
         bu_search.setOnAction(event -> {
+            //隐藏不相关的组件
             setModifyButtonVisual(false);
             setDeleteButtonVisual(false);
             setTextFieldNotVisible();
+            //设置四种查询类型按钮的位置,再查询按钮的正下方
             search1.setLayoutX(600);
             search2.setLayoutX(600);
             search3.setLayoutX(600);
@@ -321,10 +327,12 @@ public class Test3 extends Application {
             search2.setLayoutY(450 + 2 * deleteButtonHeight);
             search3.setLayoutY(450 + 3 * deleteButtonHeight);
             search4.setLayoutY(450 + 4 * deleteButtonHeight);
-
+            //显示查询按钮
             setSearchButtonVisual(true);
+            //设置点击事件
             search1.setOnAction(event1 -> {
-                for (int j = 0; j < 100; j++) {
+                for (int j = 0; j < 100; j++) {   //不知道为什么一次并不能完全筛选,在这里我设置筛选100词
+                    //查询逻辑就是把不是该类型的删除
                     for (int i = 0; i < list.size(); i++) {
                         if (!(list.get(i) instanceof Student)) {
                             list.remove(i);
@@ -368,6 +376,7 @@ public class Test3 extends Application {
                 tableView.refresh();
             });
 
+            //添加查询按钮
             ap.getChildren().add(search1);
             ap.getChildren().add(search2);
             ap.getChildren().add(search3);
@@ -378,13 +387,15 @@ public class Test3 extends Application {
         ap.getChildren().add(bu_search);
     }
 
+    //修改功能
     private void modifyFunction(ObservableList<Person> list, AnchorPane ap, TableView<Person> tableView) {
         //修改按钮
         Button bu_modify = new Button("修改信息");
-
+        //确定按钮,修改完后点击
+        //设置位置
         confirmButton.setLayoutX(1040);
         confirmButton.setLayoutY(22 + 17 * deleteButtonHeight);
-
+        //设置点击事件
         confirmButton.setOnAction(event -> {
             Person temp = list.get(modifyChoice);
             //姓名
@@ -432,12 +443,15 @@ public class Test3 extends Application {
             list.set(modifyChoice, temp);
         });
 
+        //设置按钮不可见,只有当行修改按钮点击后才可见
         confirmButton.setVisible(false);
         ap.getChildren().add(confirmButton);
 
+        //设置总修改按钮位置
         bu_modify.setLayoutX(700);
         bu_modify.setLayoutY(450);
 
+        //每行设置修改按钮
         modify1.setLayoutX(975);
         modify2.setLayoutX(975);
         modify3.setLayoutX(975);
@@ -488,7 +502,7 @@ public class Test3 extends Application {
         setPerModifyButtonEvent(list, modify14, 13);
         setPerModifyButtonEvent(list, modify15, 14);
 
-
+        //添加行修改按钮
         ap.getChildren().add(modify1);
         ap.getChildren().add(modify2);
         ap.getChildren().add(modify3);
@@ -520,7 +534,7 @@ public class Test3 extends Application {
         salaryField.setLayoutX(1025);
         officeField.setLayoutX(1025);
 
-
+        //设置修改内容文本输入框位置
         nameField.setLayoutY(22 + 0 * deleteButtonHeight);
         addressField.setLayoutY(22 + 1 * deleteButtonHeight);
         phoneNumberField.setLayoutY(22 + 2 * deleteButtonHeight);
@@ -533,6 +547,7 @@ public class Test3 extends Application {
         salaryField.setLayoutY(22 + 9 * deleteButtonHeight);
         officeField.setLayoutY(22 + 10 * deleteButtonHeight);
 
+        //设置输入框提示背景
         nameField.setPromptText("请输入姓名");
         addressField.setPromptText("请输入地址");
         phoneNumberField.setPromptText("请输入电话");
@@ -545,10 +560,10 @@ public class Test3 extends Application {
         salaryField.setPromptText("请输入薪资");
         officeField.setPromptText("请输入办公室");
 
-
+        //设置文本输入框不可见
         setTextFieldNotVisible();
 
-
+        //添加文本输入框
         ap.getChildren().add(nameField);
         ap.getChildren().add(addressField);
         ap.getChildren().add(phoneNumberField);
@@ -561,7 +576,7 @@ public class Test3 extends Application {
         ap.getChildren().add(salaryField);
         ap.getChildren().add(officeField);
 
-
+        //总修改按钮事件
         bu_modify.setOnAction(event -> {
             setModifyButtonVisual(true);
             setDeleteButtonVisual(false);
@@ -574,20 +589,24 @@ public class Test3 extends Application {
     private static void exitFunction(AnchorPane ap) {
         //退出按钮
         Button bu_exit = new Button("退出");
+        //设置按钮位置
         bu_exit.setLayoutX(800);
         bu_exit.setLayoutY(450);
+        //设置按钮事件
         bu_exit.setOnAction(event -> {
+            //结束jvm
             System.exit(0);
         });
         ap.getChildren().add(bu_exit);
     }
 
+    //删除功能
     private void deleteFunction(ObservableList<Person> list, TableView<Person> tableView, AnchorPane ap) {
         //删除按钮
         Button bu_delete = new Button("删除人物");
         bu_delete.setLayoutX(500);
         bu_delete.setLayoutY(450);
-
+        //设置行删除按钮
         setDelete_bu(list, tableView, ap, 975, 22 + 0 * deleteButtonHeight, 0, delete1);
         setDelete_bu(list, tableView, ap, 975, 22 + 1 * deleteButtonHeight, 1, delete2);
         setDelete_bu(list, tableView, ap, 975, 22 + 2 * deleteButtonHeight, 2, delete3);
@@ -603,33 +622,39 @@ public class Test3 extends Application {
         setDelete_bu(list, tableView, ap, 975, 22 + 12 * deleteButtonHeight, 12, delete13);
         setDelete_bu(list, tableView, ap, 975, 22 + 13 * deleteButtonHeight, 13, delete14);
         setDelete_bu(list, tableView, ap, 975, 22 + 14 * deleteButtonHeight, 14, delete15);
-
+        //设置不可见,当点击总删除按钮时可见
         setDeleteButtonVisual(false);
+        //总删除按钮点击事件
         bu_delete.setOnAction(event -> {
+            //设置无关组件不可见
             setSearchButtonVisual(false);
-            setDeleteButtonVisual(true);
             setModifyButtonVisual(false);
+            //设置相关组件可见
+            setDeleteButtonVisual(true);
             setTextFieldNotVisible();
 
         });
         ap.getChildren().add(bu_delete);
     }
 
+    //增加功能
     private void addFunction(ObservableList<Person> list, TableView<Person> tableView, AnchorPane ap) {
         //添加按钮
         Button bu_add = new Button("添加人物");
+        //设置按钮位置
         bu_add.setLayoutX(400);
         bu_add.setLayoutY(450);
+        //设置按钮事件
         bu_add.setOnAction(event -> {
+            //设置其他无关组件不可见
             setSearchButtonVisual(false);
             setDeleteButtonVisual(false);
             setModifyButtonVisual(false);
             setTextFieldNotVisible();
+            //获取随机人物对象并添加至list
             list.add(gerPersonList().get(0));
             System.out.println("添加成功");
             tableView.refresh();
-
-
         });
 
         ap.getChildren().add(bu_add);
@@ -650,6 +675,7 @@ public class Test3 extends Application {
         confirmButton.setVisible(false);
     }
 
+    //行修改按钮功能
     private void setPerModifyButtonEvent(ObservableList<Person> list, Button modify, int line) {
         modify.setOnAction(event -> {
             modifyChoice = line;
@@ -685,8 +711,10 @@ public class Test3 extends Application {
     }
 
     private void setDelete_bu(ObservableList<Person> list, TableView<Person> tableView, AnchorPane ap, double x, double y, int index, Button delete) {
+        //设置行删除按钮的位置
         delete.setLayoutX(x);
         delete.setLayoutY(y);
+        //设置行删除按钮的事件
         delete.setOnAction(event1 -> {
             list.remove(index);
             tableView.refresh();
@@ -714,6 +742,7 @@ public class Test3 extends Application {
     }
 
 
+    //修改具体实现逻辑
     private void modifyEvent(ObservableList<Person> list, int line) {
         Person temp = list.get(line);
         //姓名

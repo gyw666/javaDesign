@@ -87,7 +87,8 @@ public abstract class Person {
     }
 
     public boolean fileWrite(String fileName) {
-        String content=fileRead(fileName)+toString();
+        //先读取原来文件中的地址,再加上现在对象的信息,最后再重新输出
+        String content=fileRead(fileName)+this.toString();
         File writeName = new File(fileName);
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(writeName));
