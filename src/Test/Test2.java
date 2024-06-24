@@ -6,7 +6,8 @@ import java.util.Random;
 
 
 public class Test2 {
-    public static final String FILENAME="person.txt";
+    public static final String FILENAME = "person.txt";
+
     public static void main(String[] args) {
         //personType.Student personType.Faculty staff
         //MyDate(year,month,day)
@@ -18,40 +19,40 @@ public class Test2 {
             //2 personType.Faculty
             //3 personType.Staff
             //4 personType.Postgraduate
-            int type = 1+rand.nextInt(4);
+            int type = 1 + rand.nextInt(4);
             switch (type) {
                 case 1: {
                     //personType.Student
-                    persons[i]=new Student(getName(),getAddress(),getPhoneNumber(),getEmailAddress());
+                    persons[i] = new Student(getName(), getAddress(), getPhoneNumber(), getEmailAddress());
                     break;
                 }
                 case 2: {
                     //personType.Faculty
-                    persons[i]=new Faculty(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getOffice(),getSalary(),getMyData(),getWorkTime(),getRank());
+                    persons[i] = new Faculty(getName(), getAddress(), getPhoneNumber(), getEmailAddress(), getOffice(), getSalary(), getMyData(), getWorkTime(), getRank());
                     break;
                 }
                 case 3: {
                     //personType.Staff
-                    persons[i]=new Staff(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getOffice(),getSalary(),getMyData(),getTitle());
+                    persons[i] = new Staff(getName(), getAddress(), getPhoneNumber(), getEmailAddress(), getOffice(), getSalary(), getMyData(), getTitle());
                     break;
                 }
                 case 4: {
                     //personType.Postgraduate
-                    persons[i]=new Postgraduate(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getResearchField(),getTutor());
+                    persons[i] = new Postgraduate(getName(), getAddress(), getPhoneNumber(), getEmailAddress(), getResearchField(), getTutor());
                 }
             }
         }
         //打印
         printMessages(persons);
         //将对象信息输出至person.txt
-        for(Person person: persons){
+        for (Person person : persons) {
             person.fileWrite(FILENAME);
         }
         System.out.println(capacity);
     }
 
     public static void printMessages(Person[] persons) {
-        for(Person person: persons){
+        for (Person person : persons) {
             System.out.println(person);
         }
     }
@@ -61,7 +62,7 @@ public class Test2 {
     public static MyData getMyData() {
         Random rand = new Random();
         //生成随机年份
-        String year = 2000+rand.nextInt(25) + "";
+        String year = 2000 + rand.nextInt(25) + "";
         int m = rand.nextInt(13);
         String month = m + "";
         String day = "";

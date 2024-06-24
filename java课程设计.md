@@ -1,4 +1,4 @@
-#                    2.人员信息
+# 2.人员信息
 
 ### 源码:
 
@@ -8,7 +8,7 @@ https://github.com/gyw666/javaDesign2
 
 ##### 题目要求:
 
-​           设计 Person 类，有姓名、地址、电话号码和电子邮件等属性。其子类为 Student 和
+ 设计 Person 类，有姓名、地址、电话号码和电子邮件等属性。其子类为 Student 和
 
 Employee，其中 Employee 类又有教员类 Faculty 和职员类 staff。学生类有班级状态（大一、
 
@@ -18,19 +18,13 @@ Employee，其中 Employee 类又有教员类 Faculty 和职员类 staff。学�
 
 类有职务称号。重写每个类中的 toString 方法，显示相应的类名和人名。
 
-​			编写测试类 Test1，要求随机产生不同的对象，并将这些对象存储到数组中，并用方法
+ 编写测试类 Test1，要求随机产生不同的对象，并将这些对象存储到数组中，并用方法
 
 printMessages(Person[] persons)将对象的信息输出。
 
-##### 源码
-
-https://github.com/gyw666/javaDesign2
-
 ##### 思路:
 
-<img src="C:\Users\28633\Pictures\Camera Roll\微信图片_20240622170001.jpg" style="zoom: 33%;" />
-
-
+![](assets/Screenshot 2024-06-24 112847.png)
 
 ##### 代码
 
@@ -165,8 +159,6 @@ public abstract class Person {
 }
 ```
 
-
-
 ```java
 package personType;
 
@@ -186,8 +178,6 @@ public class Student extends Person {
 }
 ```
 
-
-
 ```java
 package personType;
 
@@ -199,7 +189,7 @@ public abstract class Employee extends Person {
     public Employee() {
     }
 
-    public Employee(String name, String address, String phoneNumber, String emailAddress,String office, String salary, MyData data) {
+    public Employee(String name, String address, String phoneNumber, String emailAddress, String office, String salary, MyData data) {
         super(name, address, phoneNumber, emailAddress);
         this.office = office;
         this.salary = salary;
@@ -309,12 +299,10 @@ public class Faculty extends Employee {
     }
 
     public String toString() {
-        return "class:personType.Faculty,name:"+this.getName();
+        return "class:personType.Faculty,name:" + this.getName();
     }
 }
 ```
-
-
 
 ```java
 package personType;
@@ -326,7 +314,7 @@ public class Staff extends Employee {
     }
 
     public Staff(String name, String address, String phoneNumber, String emailAddress, String office, String salary, MyData data, String title) {
-        super(name,address,phoneNumber,emailAddress,office,salary,data);
+        super(name, address, phoneNumber, emailAddress, office, salary, data);
         this.title = title;
     }
 
@@ -347,12 +335,10 @@ public class Staff extends Employee {
     }
 
     public String toString() {
-        return "class:personType.Staff,name:"+this.getName();
+        return "class:personType.Staff,name:" + this.getName();
     }
 }
 ```
-
-
 
 ```java
 package personType;
@@ -364,8 +350,8 @@ public class Postgraduate extends Student {
     public Postgraduate() {
     }
 
-    public Postgraduate(String name,String address,String phoneNumber,String emailAddress,String searchField, String tutor) {
-        super(name,address,phoneNumber,emailAddress);
+    public Postgraduate(String name, String address, String phoneNumber, String emailAddress, String searchField, String tutor) {
+        super(name, address, phoneNumber, emailAddress);
         this.searchField = searchField;
         this.tutor = tutor;
     }
@@ -403,12 +389,10 @@ public class Postgraduate extends Student {
     }
 
     public String toString() {
-        return "class:personType.Postgraduate,name:"+this.getName();
+        return "class:personType.Postgraduate,name:" + this.getName();
     }
 }
 ```
-
-
 
 ```java
 package personType;
@@ -492,7 +476,8 @@ import java.util.Random;
 
 
 public class Test1 {
-    public static final String FILENAME="person.txt";
+    public static final String FILENAME = "person.txt";
+
     public static void main(String[] args) {
         //personType.Student personType.Faculty staff
         //MyDate(year,month,day)
@@ -503,21 +488,21 @@ public class Test1 {
             //1 personType.Student
             //2 personType.Faculty
             //3 personType.Staff
-            int type = 1+rand.nextInt(3);
+            int type = 1 + rand.nextInt(3);
             switch (type) {
                 case 1: {
                     //personType.Student
-                    persons[i]=new Student(getName(),getAddress(),getPhoneNumber(),getEmailAddress());
+                    persons[i] = new Student(getName(), getAddress(), getPhoneNumber(), getEmailAddress());
                     break;
                 }
                 case 2: {
                     //personType.Faculty
-                    persons[i]=new Faculty(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getOffice(),getSalary(),getMyData(),getWorkTime(),getRank());
+                    persons[i] = new Faculty(getName(), getAddress(), getPhoneNumber(), getEmailAddress(), getOffice(), getSalary(), getMyData(), getWorkTime(), getRank());
                     break;
                 }
                 case 3: {
                     //personType.Staff
-                    persons[i]=new Staff(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getOffice(),getSalary(),getMyData(),getTitle());
+                    persons[i] = new Staff(getName(), getAddress(), getPhoneNumber(), getEmailAddress(), getOffice(), getSalary(), getMyData(), getTitle());
                     break;
                 }
             }
@@ -527,7 +512,7 @@ public class Test1 {
     }
 
     public static void printMessages(Person[] persons) {
-        for(Person person: persons){
+        for (Person person : persons) {
             System.out.println(person);
         }
     }
@@ -537,7 +522,7 @@ public class Test1 {
     public static MyData getMyData() {
         Random rand = new Random();
         //生成随机年份
-        String year = 2000+rand.nextInt(25) + "";
+        String year = 2000 + rand.nextInt(25) + "";
         int m = rand.nextInt(13);
         String month = m + "";
         String day = "";
@@ -602,21 +587,16 @@ public class Test1 {
 
 ##### 输出效果
 
-![](assets/Screenshot 2024-06-22 183601.png)
-
-
-
-
+![](assets/微信图片_20240624114330.png)
 
 ## version 2
 
 ##### 题目要求:
 
-​           在上面实现类的基础上，为每个类增加一个将当前对象序列化到指定文件的方法writeToFile(File f)。为 Student 类创建一个新的子类 Postgraduate，有研究方向和导师姓名两个新增数据域。编写测试类 Test2，要求随机产生不同的对象，并将这些对象序列化到指
+ 在上面实现类的基础上，为每个类增加一个将当前对象序列化到指定文件的方法writeToFile(File f)。为 Student 类创建一个新的子类
+Postgraduate，有研究方向和导师姓名两个新增数据域。编写测试类 Test2，要求随机产生不同的对象，并将这些对象序列化到指
 
 定的文件中，并用方法 printMessages(Person[] persons)将对象的信息输出。
-
-
 
 ##### 测试类
 
@@ -629,7 +609,8 @@ import java.util.Random;
 
 
 public class Test2 {
-    public static final String FILENAME="person.txt";
+    public static final String FILENAME = "person.txt";
+
     public static void main(String[] args) {
         //personType.Student personType.Faculty staff
         //MyDate(year,month,day)
@@ -641,40 +622,40 @@ public class Test2 {
             //2 personType.Faculty
             //3 personType.Staff
             //4 personType.Postgraduate
-            int type = 1+rand.nextInt(4);
+            int type = 1 + rand.nextInt(4);
             switch (type) {
                 case 1: {
                     //personType.Student
-                    persons[i]=new Student(getName(),getAddress(),getPhoneNumber(),getEmailAddress());
+                    persons[i] = new Student(getName(), getAddress(), getPhoneNumber(), getEmailAddress());
                     break;
                 }
                 case 2: {
                     //personType.Faculty
-                    persons[i]=new Faculty(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getOffice(),getSalary(),getMyData(),getWorkTime(),getRank());
+                    persons[i] = new Faculty(getName(), getAddress(), getPhoneNumber(), getEmailAddress(), getOffice(), getSalary(), getMyData(), getWorkTime(), getRank());
                     break;
                 }
                 case 3: {
                     //personType.Staff
-                    persons[i]=new Staff(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getOffice(),getSalary(),getMyData(),getTitle());
+                    persons[i] = new Staff(getName(), getAddress(), getPhoneNumber(), getEmailAddress(), getOffice(), getSalary(), getMyData(), getTitle());
                     break;
                 }
                 case 4: {
                     //personType.Postgraduate
-                    persons[i]=new Postgraduate(getName(),getAddress(),getPhoneNumber(),getEmailAddress(),getResearchField(),getTutor());
+                    persons[i] = new Postgraduate(getName(), getAddress(), getPhoneNumber(), getEmailAddress(), getResearchField(), getTutor());
                 }
             }
         }
         //打印
         printMessages(persons);
         //将对象信息输出至person.txt
-        for(Person person: persons){
+        for (Person person : persons) {
             person.fileWrite(FILENAME);
         }
         System.out.println(capacity);
     }
 
     public static void printMessages(Person[] persons) {
-        for(Person person: persons){
+        for (Person person : persons) {
             System.out.println(person);
         }
     }
@@ -684,7 +665,7 @@ public class Test2 {
     public static MyData getMyData() {
         Random rand = new Random();
         //生成随机年份
-        String year = 2000+rand.nextInt(25) + "";
+        String year = 2000 + rand.nextInt(25) + "";
         int m = rand.nextInt(13);
         String month = m + "";
         String day = "";
@@ -802,13 +783,12 @@ class:personType.Faculty,name:name45
 class:personType.Student,name:name34
 ```
 
-
-
 ## version 3
 
 ##### 题目要求:
 
-​          在版本 2 的基础上设计实现一个具有 GUI 界面的人员信息管理系统，要求实现基本的人员增、删、改、查的功能，人员信息列表应采用 TableView 组件。
+ 在版本 2 的基础上设计实现一个具有 GUI 界面的人员信息管理系统，要求实现基本的人员增、删、改、查的功能，人员信息列表应采用
+TableView 组件。
 
 ##### 测试类
 
@@ -828,6 +808,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -1620,25 +1601,23 @@ public class Test3 extends Application {
 }
 ```
 
-
-
 ##### 输出效果
 
 初始界面
 
-![](assets/Screenshot 2024-06-22 184005.png)
-
-修改信息界面
-
-![](assets/Screenshot 2024-06-22 184220.png)
-
-查询界面
-
-![](assets/Screenshot 2024-06-22 184118.png)
+![](assets/Screenshot 2024-06-24 113748.png)
 
 删除界面
 
-![](assets/Screenshot 2024-06-22 184046.png)
+![](assets/Screenshot 2024-06-24 113857.png)
+
+查找界面
+
+![](assets/Screenshot 2024-06-24 113941.png)
+
+修改界面
+
+![](assets/微信图片_20240624114024.png)
 
 
 
@@ -1646,11 +1625,7 @@ public class Test3 extends Application {
 
 
 
-
-
-
-
-#                    6.模拟风扇
+# 6.模拟风扇
 
 ### 源码:
 
@@ -1660,11 +1635,11 @@ https://github.com/gyw666/javaDesign6
 
 ##### 题目要求:
 
-​				模拟实现电风扇，可以调 3 档速度（慢速、中速、快速）；开关按钮；定时吹风；描述
+ 模拟实现电风扇，可以调 3 档速度（慢速、中速、快速）；开关按钮；定时吹风；描述
 
 风扇的扇叶大小、颜色等。
 
-​				设计 Fan 类，属性包括：3 个常量 SLOW（1）、MEDIUM（2）、FAST（3）代表风扇
+ 设计 Fan 类，属性包括：3 个常量 SLOW（1）、MEDIUM（2）、FAST（3）代表风扇
 
 的速度；1 个 int 属性 speed 指定速度，默认值为 SLOW；1 个 boolean 属性 on 指定开关机，
 
@@ -1673,6 +1648,10 @@ https://github.com/gyw666/javaDesign6
 色，默认值为 blue。方法包括这些属性的访问器、构造函数、重写 Object 类的 toString()和
 
 equals()方法等。
+
+##### UML
+
+![](assets/Screenshot 2024-06-24 113040.png)
 
 ##### 代码
 
@@ -1779,8 +1758,6 @@ public class Fan1 implements Comparable<Fan1>{
 }
 ```
 
-
-
 ##### 测试类
 
 ```java
@@ -1801,21 +1778,23 @@ public class test1 {
 
 ##### 输出效果
 
-![](assets/Screenshot 2024-06-22 184844.png)
-
-
+![](assets/微信图片_20240624114238.png)
 
 ## version 2
 
 ##### 题目要求:
 
-​				修改版本 1 中 Fan 类，让其继承 Pane 类，并且把 color 属性设置为 Color 类型，默认属
+ 修改版本 1 中 Fan 类，让其继承 Pane 类，并且把 color 属性设置为 Color 类型，默认属
 
 性为 red。随机产生 radius，取值范围为 1-5；随机产生颜色，取值范围为 red、blue、yellow、
 
 green、orange；根据 color、radius 属性值绘制风扇。运行如下图：
 
 <img src="C:\Users\28633\Pictures\Screenshots\Screenshot 2024-06-22 171253.png" style="zoom: 80%;" />
+
+##### UML
+
+![](assets/Screenshot 2024-06-24 113111.png)
 
 ##### 代码
 
@@ -1941,8 +1920,6 @@ public class Fan2 extends Pane{
 }
 ```
 
-
-
 ##### 测试类
 
 ```java
@@ -1966,9 +1943,9 @@ public class test2 extends Application {
     public void start(Stage primaryStage) throws Exception {
         Color color = Fan2.getRandomColor();
         int radius = Fan2.getRandomRadius();
-        Fan2 fan = new Fan2(color,radius);
+        Fan2 fan = new Fan2(color, radius);
 
-        Scene scene =new Scene(fan,800,600);
+        Scene scene = new Scene(fan, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.setAlwaysOnTop(true);
         primaryStage.setTitle("顾砚文牌牛逼风扇");
@@ -1980,21 +1957,21 @@ public class test2 extends Application {
 
 ##### 输出效果
 
-![](assets/Screenshot 2024-06-22 185242.png)
-
-
+![](assets/微信图片_20240624114204.png)
 
 ## version 3
 
 ##### 题目要求:
 
-​				让版本 2 中的风扇转起来。创建一个 FanControl 类包含以下内容：Start、Stop、Reverse
+ 让版本 2 中的风扇转起来。创建一个 FanControl 类包含以下内容：Start、Stop、Reverse
 
 按钮，用于开启、关闭、反转控制；一个滚动条控制速度。运行示例如下：
 
 <img src="C:\Users\28633\Pictures\Screenshots\Screenshot 2024-06-22 171618.png" style="zoom:67%;" />
 
+##### UML
 
+![](assets/Screenshot 2024-06-24 113202.png)
 
 ##### 代码
 
@@ -2020,11 +1997,12 @@ import javafx.util.Duration;
 import java.util.Random;
 
 
-public class Fan3 extends Pane{
+public class Fan3 extends Pane {
     private Color color;
     private int radius;
-    Group group=new Group();
+    Group group = new Group();
     Scene scene;
+
     public Fan3() {
         color = Color.RED;
     }
@@ -2055,7 +2033,7 @@ public class Fan3 extends Pane{
         double centerX = 400;
         double centerY = 300;
         for (int i = 0; i < 4; i++) {
-            Arc arc = new Arc(centerX,centerY,radius,radius,i*90+30,30);
+            Arc arc = new Arc(centerX, centerY, radius, radius, i * 90 + 30, 30);
             arc.setType(ArcType.ROUND);
             arc.setFill(color);
             arc.setStroke(Color.BLACK);
@@ -2100,49 +2078,44 @@ public class Fan3 extends Pane{
         group.getChildren().add(path);
 
 
-
         Button blueButton = new Button("蓝色");
         Button yellowButton = new Button("黄色");
         Button greenButton = new Button("绿色");
         Button orangeButton = new Button("橙色");
         Button redButton = new Button("红色");
 
-        VBox hc=new VBox(10, blueButton, yellowButton, greenButton, orangeButton, redButton);
+        VBox hc = new VBox(10, blueButton, yellowButton, greenButton, orangeButton, redButton);
         hc.setAlignment(Pos.BOTTOM_RIGHT);
 
 
+        Button radius_50 = new Button("50");
+        Button radius_100 = new Button("100");
+        Button radius_150 = new Button("150");
+        Button radius_200 = new Button("200");
+        Button radius_250 = new Button("250");
 
-        Button radius_50=new Button("50");
-        Button radius_100=new Button("100");
-        Button radius_150=new Button("150");
-        Button radius_200=new Button("200");
-        Button radius_250=new Button("250");
-
-        VBox r=new VBox(10, radius_50, radius_100, radius_150, radius_200, radius_250);
+        VBox r = new VBox(10, radius_50, radius_100, radius_150, radius_200, radius_250);
         r.setAlignment(Pos.BOTTOM_LEFT);
 
         radius_100.setOnAction(event -> {
-            new Fan3(this.color,100).drawFan(primaryStage);
+            new Fan3(this.color, 100).drawFan(primaryStage);
         });
 
         radius_150.setOnAction(event -> {
-            new Fan3(this.color,150).drawFan(primaryStage);
+            new Fan3(this.color, 150).drawFan(primaryStage);
         });
 
         radius_200.setOnAction(event -> {
-            new Fan3(this.color,200).drawFan(primaryStage);
+            new Fan3(this.color, 200).drawFan(primaryStage);
         });
 
         radius_50.setOnAction(event -> {
-            new Fan3(this.color,50).drawFan(primaryStage);
+            new Fan3(this.color, 50).drawFan(primaryStage);
         });
 
         radius_250.setOnAction(event -> {
-            new Fan3(this.color,250).drawFan(primaryStage);
+            new Fan3(this.color, 250).drawFan(primaryStage);
         });
-
-
-
 
 
         Button pause = new Button("暂停"); //暂停按钮
@@ -2154,32 +2127,29 @@ public class Fan3 extends Pane{
         hBox.setAlignment(Pos.BOTTOM_CENTER);
 
 
-
-
-
-        redButton.setOnAction(event ->{
-            new Fan3(Color.RED,radius).drawFan(primaryStage);
+        redButton.setOnAction(event -> {
+            new Fan3(Color.RED, radius).drawFan(primaryStage);
         });
 
-        blueButton.setOnAction(event ->{
-            new Fan3(Color.BLUE,radius).drawFan(primaryStage);
+        blueButton.setOnAction(event -> {
+            new Fan3(Color.BLUE, radius).drawFan(primaryStage);
         });
 
-        yellowButton.setOnAction(event ->{
-            new Fan3(Color.YELLOW,radius).drawFan(primaryStage);
+        yellowButton.setOnAction(event -> {
+            new Fan3(Color.YELLOW, radius).drawFan(primaryStage);
         });
 
-        greenButton.setOnAction(event ->{
-            new Fan3(Color.GREEN,radius).drawFan(primaryStage);
+        greenButton.setOnAction(event -> {
+            new Fan3(Color.GREEN, radius).drawFan(primaryStage);
         });
 
-        orangeButton.setOnAction(event ->{
-            new Fan3(Color.ORANGE,radius).drawFan(primaryStage);
+        orangeButton.setOnAction(event -> {
+            new Fan3(Color.ORANGE, radius).drawFan(primaryStage);
         });
 
         //关键帧
-        KeyFrame keyFrame1 = new KeyFrame(Duration.millis(10), event -> group.setRotate(group.getRotate()+1));
-        KeyFrame keyFrame2 = new KeyFrame(Duration.millis(10), event -> group.setRotate(group.getRotate()-1));
+        KeyFrame keyFrame1 = new KeyFrame(Duration.millis(10), event -> group.setRotate(group.getRotate() + 1));
+        KeyFrame keyFrame2 = new KeyFrame(Duration.millis(10), event -> group.setRotate(group.getRotate() - 1));
         Timeline animation = new Timeline(keyFrame1);   //时间线动画
         animation.setCycleCount(Timeline.INDEFINITE);   //无限循环次数
         animation.play();   //启动动画
@@ -2201,7 +2171,7 @@ public class Fan3 extends Pane{
         borderPane.setLeft(r);
         borderPane.setBottom(slider);
 
-        scene=new Scene(borderPane, 800, 600);
+        scene = new Scene(borderPane, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.setTitle("顾砚文牌牛逼风扇");
         primaryStage.show();
@@ -2209,34 +2179,32 @@ public class Fan3 extends Pane{
 
 
     public static Color getRandomColor() {
-        int choice=new Random().nextInt(5);
+        int choice = new Random().nextInt(5);
         switch (choice) {
-            case 0:{
+            case 0: {
                 return Color.RED;
             }
-            case 1:{
+            case 1: {
                 return Color.BLUE;
             }
-            case 2:{
+            case 2: {
                 return Color.YELLOW;
             }
-            case 3:{
+            case 3: {
                 return Color.GREEN;
             }
-            case 4:{
+            case 4: {
                 return Color.ORANGE;
             }
         }
         return null;
     }
 
-    public static int getRandomRadius(){
-        return 50*(1+new Random().nextInt(4));
+    public static int getRandomRadius() {
+        return 50 * (1 + new Random().nextInt(4));
     }
 }
 ```
-
-
 
 ##### 测试类
 
@@ -2261,7 +2229,7 @@ public class test3 extends Application {
     public void start(Stage primaryStage) throws Exception {
         Color color = Fan3.getRandomColor();
         int radius = Fan3.getRandomRadius();
-        Fan3 fan = new Fan3(color,radius);
+        Fan3 fan = new Fan3(color, radius);
         fan.setRadius(200);
         fan.drawFan(primaryStage);
 
@@ -2271,7 +2239,7 @@ public class test3 extends Application {
 
 ##### 输出效果
 
-![](assets/Screenshot 2024-06-22 185506.png)
+![](assets/微信图片_20240624114132.png)
 
 
 
@@ -2281,25 +2249,33 @@ public class test3 extends Application {
 
 
 
-# 								课程设计总结
 
-​				在这次的程序设计中，我完成了人员管理系统和模拟风扇的设计开发，收获颇丰。这两个项目使我在实际应用中深入理解了JavaFX的核心组件和动画效果，并提升了编程能力和项目管理技能。
 
-#### 人员管理:				
+# 课程设计总结
 
-​				首先，人员管理系统项目让我深入了解了JavaFX中的TableView、Button和TextField等基本组件的使用。TableView作为展示和管理表格数据的重要组件，在这个项目中发挥了核心作用。我学习并实践了如何通过ObservableList来动态更新表格数据，从而实现数据的增删改查功能。通过这些操作，我对数据绑定（data binding）有了更深的认识，并学会了如何有效地管理和更新界面上的数据。
+ 在这次的程序设计中，我完成了人员管理系统和模拟风扇的设计开发，收获颇丰。这两个项目使我在实际应用中深入理解了JavaFX的核心组件和动画效果，并提升了编程能力和项目管理技能。
 
-​				在设计用户界面时，Button和TextField的结合使用让我掌握了响应用户输入的基本方法。例如，通过监听Button的点击事件，我能够触发相应的动作，如添加新人员、删除选定人员等。而TextField则用于接收用户的输入数据，通过设置合适的事件处理器，可以实现数据的验证和处理。这一过程不仅提高了我的事件处理能力，还让我理解了如何设计用户友好的交互界面。
+#### 人员管理:
+
+
+首先，人员管理系统项目让我深入了解了JavaFX中的TableView、Button和TextField等基本组件的使用。TableView作为展示和管理表格数据的重要组件，在这个项目中发挥了核心作用。我学习并实践了如何通过ObservableList来动态更新表格数据，从而实现数据的增删改查功能。通过这些操作，我对数据绑定（data
+binding）有了更深的认识，并学会了如何有效地管理和更新界面上的数据。
+
+
+在设计用户界面时，Button和TextField的结合使用让我掌握了响应用户输入的基本方法。例如，通过监听Button的点击事件，我能够触发相应的动作，如添加新人员、删除选定人员等。而TextField则用于接收用户的输入数据，通过设置合适的事件处理器，可以实现数据的验证和处理。这一过程不仅提高了我的事件处理能力，还让我理解了如何设计用户友好的交互界面。
 
 #### 模拟风扇:
 
-​				在模拟风扇项目中，我额外使用了Slider和KeyFrame等组件。Slider用于调节风扇速度，这使我对JavaFX的控件交互有了更深的理解。KeyFrame的使用则让我掌握了JavaFX的动画系统，通过设置关键帧和时间轴，我实现了风扇叶片的旋转效果。在这个过程中，我学会了如何创建平滑的动画效果，并理解了动画的性能优化问题。
+
+在模拟风扇项目中，我额外使用了Slider和KeyFrame等组件。Slider用于调节风扇速度，这使我对JavaFX的控件交互有了更深的理解。KeyFrame的使用则让我掌握了JavaFX的动画系统，通过设置关键帧和时间轴，我实现了风扇叶片的旋转效果。在这个过程中，我学会了如何创建平滑的动画效果，并理解了动画的性能优化问题。
 
 #### 心得:
 
-​				这两个项目还让我意识到了代码结构和模块化设计的重要性。在开发过程中，我逐渐养成了将代码分离成多个类和方法的习惯，使代码更加清晰易懂，也便于维护和扩展。此外，我还学会了使用Git进行版本控制。这对团队协作和项目管理非常有帮助。通过Git，我能够记录每次代码的修改历史，方便回溯和查看不同版本之间的变化。这一技能在实际开发中非常重要，尤其是在多人协作的项目中，可以有效避免代码冲突和版本混乱问题。
 
-​				总的来说，通过这两个项目的开发，我不仅提高了JavaFX编程水平，还在实际应用中锻炼了逻辑思维和问题解决能力。理论知识在项目中的实践应用，使我更加理解了软件开发的全流程。从需求分析、设计实现到测试调优，每一个环节都充满了挑战与收获。这段经历为我未来的学习和工作打下了坚实的基础，也让我对软件开发充满了信心和热情。
+这两个项目还让我意识到了代码结构和模块化设计的重要性。在开发过程中，我逐渐养成了将代码分离成多个类和方法的习惯，使代码更加清晰易懂，也便于维护和扩展。此外，我还学会了使用Git进行版本控制。这对团队协作和项目管理非常有帮助。通过Git，我能够记录每次代码的修改历史，方便回溯和查看不同版本之间的变化。这一技能在实际开发中非常重要，尤其是在多人协作的项目中，可以有效避免代码冲突和版本混乱问题。
+
+
+总的来说，通过这两个项目的开发，我不仅提高了JavaFX编程水平，还在实际应用中锻炼了逻辑思维和问题解决能力。理论知识在项目中的实践应用，使我更加理解了软件开发的全流程。从需求分析、设计实现到测试调优，每一个环节都充满了挑战与收获。这段经历为我未来的学习和工作打下了坚实的基础，也让我对软件开发充满了信心和热情。
 
 
 

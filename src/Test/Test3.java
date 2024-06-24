@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -280,7 +281,7 @@ public class Test3 extends Application {
         //设置cqut背景
 
         //创建背景图片
-        Image image = new Image("file:D:\\java\\javaDesign\\src\\Test\\cqut.png");
+        Image image = new Image("file:D:\\java\\projects\\javaDesign2\\src\\Test\\cqut.png");
         //创建背景,放在右下角
         BackgroundImage backgroundImage = new BackgroundImage(image,
                 BackgroundRepeat.NO_REPEAT,

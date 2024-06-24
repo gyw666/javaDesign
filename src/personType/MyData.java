@@ -16,6 +16,7 @@ public class MyData {
 
     /**
      * 获取
+     *
      * @return year
      */
     public String getYear() {
@@ -24,6 +25,7 @@ public class MyData {
 
     /**
      * 设置
+     *
      * @param year
      */
     public void setYear(String year) {
@@ -32,6 +34,7 @@ public class MyData {
 
     /**
      * 获取
+     *
      * @return month
      */
     public String getMonth() {
@@ -40,6 +43,7 @@ public class MyData {
 
     /**
      * 设置
+     *
      * @param month
      */
     public void setMonth(String month) {
@@ -48,6 +52,7 @@ public class MyData {
 
     /**
      * 获取
+     *
      * @return day
      */
     public String getDay() {
@@ -56,6 +61,7 @@ public class MyData {
 
     /**
      * 设置
+     *
      * @param day
      */
     public void setDay(String day) {

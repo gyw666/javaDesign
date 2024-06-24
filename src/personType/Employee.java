@@ -8,7 +8,7 @@ public abstract class Employee extends Person {
     public Employee() {
     }
 
-    public Employee(String name, String address, String phoneNumber, String emailAddress,String office, String salary, MyData data) {
+    public Employee(String name, String address, String phoneNumber, String emailAddress, String office, String salary, MyData data) {
         super(name, address, phoneNumber, emailAddress);
         this.office = office;
         this.salary = salary;
@@ -17,6 +17,7 @@ public abstract class Employee extends Person {
 
     /**
      * 获取
+     *
      * @return office
      */
     public String getOffice() {
@@ -25,6 +26,7 @@ public abstract class Employee extends Person {
 
     /**
      * 设置
+     *
      * @param office
      */
     public void setOffice(String office) {
@@ -33,6 +35,7 @@ public abstract class Employee extends Person {
 
     /**
      * 获取
+     *
      * @return salary
      */
     public String getSalary() {
@@ -41,6 +44,7 @@ public abstract class Employee extends Person {
 
     /**
      * 设置
+     *
      * @param salary
      */
     public void setSalary(String salary) {
@@ -49,6 +53,7 @@ public abstract class Employee extends Person {
 
     /**
      * 获取
+     *
      * @return data
      */
     public MyData getData() {
@@ -57,6 +62,7 @@ public abstract class Employee extends Person {
 
     /**
      * 设置
+     *
      * @param data
      */
     public void setData(MyData data) {

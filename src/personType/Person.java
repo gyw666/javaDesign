@@ -20,6 +20,7 @@ public abstract class Person {
 
     /**
      * 获取
+     *
      * @return name
      */
     public String getName() {
@@ -28,6 +29,7 @@ public abstract class Person {
 
     /**
      * 设置
+     *
      * @param name
      */
     public void setName(String name) {
@@ -36,6 +38,7 @@ public abstract class Person {
 
     /**
      * 获取
+     *
      * @return address
      */
     public String getAddress() {
@@ -44,6 +47,7 @@ public abstract class Person {
 
     /**
      * 设置
+     *
      * @param address
      */
     public void setAddress(String address) {
@@ -52,6 +56,7 @@ public abstract class Person {
 
     /**
      * 获取
+     *
      * @return phoneNumber
      */
     public String getPhoneNumber() {
@@ -60,6 +65,7 @@ public abstract class Person {
 
     /**
      * 设置
+     *
      * @param phoneNumber
      */
     public void setPhoneNumber(String phoneNumber) {
@@ -68,6 +74,7 @@ public abstract class Person {
 
     /**
      * 获取
+     *
      * @return emailAddress
      */
     public String getEmailAddress() {
@@ -76,6 +83,7 @@ public abstract class Person {
 
     /**
      * 设置
+     *
      * @param emailAddress
      */
     public void setEmailAddress(String emailAddress) {
@@ -88,7 +96,7 @@ public abstract class Person {
 
     public boolean fileWrite(String fileName) {
         //先读取原来文件中的信息,再加上现在对象的信息,最后再重新输出
-        String content=fileRead(fileName)+this.toString();
+        String content = fileRead(fileName) + this.toString();
         File writeName = new File(fileName);
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(writeName));
@@ -101,14 +109,14 @@ public abstract class Person {
         return true;
     }
 
-    public  String fileRead(String pathName) {
+    public String fileRead(String pathName) {
         File fileName = new File(pathName);
         String line = "";
         try {
             InputStreamReader reader = new InputStreamReader(new FileInputStream(fileName));
             BufferedReader br = new BufferedReader(reader);
 
-            String tempLine="";
+            String tempLine = "";
             while (tempLine != null) {
                 tempLine = br.readLine();
                 if (tempLine != null) {

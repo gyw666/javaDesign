@@ -15,6 +15,7 @@ public class Faculty extends Employee {
 
     /**
      * 获取
+     *
      * @return workTime
      */
     public String getWorkTime() {
@@ -23,6 +24,7 @@ public class Faculty extends Employee {
 
     /**
      * 设置
+     *
      * @param workTime
      */
     public void setWorkTime(String workTime) {
@@ -31,6 +33,7 @@ public class Faculty extends Employee {
 
     /**
      * 获取
+     *
      * @return rank
      */
     public String getRank() {
@@ -39,6 +42,7 @@ public class Faculty extends Employee {
 
     /**
      * 设置
+     *
      * @param rank
      */
     public void setRank(String rank) {
@@ -46,6 +50,6 @@ public class Faculty extends Employee {
     }
 
     public String toString() {
-        return "class:personType.Faculty,name:"+this.getName();
+        return "class:personType.Faculty,name:" + this.getName();
     }
 }

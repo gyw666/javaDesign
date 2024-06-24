@@ -7,14 +7,15 @@ public class Postgraduate extends Student {
     public Postgraduate() {
     }
 
-    public Postgraduate(String name,String address,String phoneNumber,String emailAddress,String searchField, String tutor) {
-        super(name,address,phoneNumber,emailAddress);
+    public Postgraduate(String name, String address, String phoneNumber, String emailAddress, String searchField, String tutor) {
+        super(name, address, phoneNumber, emailAddress);
         this.searchField = searchField;
         this.tutor = tutor;
     }
 
     /**
      * 获取
+     *
      * @return searchField
      */
     public String getSearchField() {
@@ -23,6 +24,7 @@ public class Postgraduate extends Student {
 
     /**
      * 设置
+     *
      * @param searchField
      */
     public void setSearchField(String searchField) {
@@ -31,6 +33,7 @@ public class Postgraduate extends Student {
 
     /**
      * 获取
+     *
      * @return tutor
      */
     public String getTutor() {
@@ -39,6 +42,7 @@ public class Postgraduate extends Student {
 
     /**
      * 设置
+     *
      * @param tutor
      */
     public void setTutor(String tutor) {
@@ -46,6 +50,6 @@ public class Postgraduate extends Student {
     }
 
     public String toString() {
-        return "class:personType.Postgraduate,name:"+this.getName();
+        return "class:personType.Postgraduate,name:" + this.getName();
     }
 }
